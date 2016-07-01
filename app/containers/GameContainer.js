@@ -3,18 +3,23 @@ import { connect } from 'react-redux';
 
 import GamePage from '../components/Gamepage';
 
-import { humanPlays } from '../actions/gameActions';
+import { humanPlays, checkGameOver } from '../actions/gameActions';
 
 class GameContainer extends Component {
 
   render() {
-    return <GamePage {...this.props}/>
+    let { isGameOver } = this.props
+    { isGameOver() }
+    return (
+      <GamePage {...this.props}/>
+    )
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    UserClicked: (cellNo) => dispatch(humanPlays(cellNo))
+    userClicked: (cellNo) => dispatch(humanPlays(cellNo)),
+    isGameOver: () => dispatch(checkGameOver())
   }
 }
 

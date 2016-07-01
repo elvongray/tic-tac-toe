@@ -12,9 +12,9 @@ export default class GamePage extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(gameState, cellNo, UserClicked) {
+  handleClick(gameState, cellNo, userClicked) {
     if (gameState[cellNo] === 'o') return;
-
+    userClicked(cellNo);
   }
 
   displayCircleOrTimes(gameState, position) {
@@ -37,7 +37,7 @@ export default class GamePage extends Component {
   }
 
   render() {
-    let { gameState, gameStatus, nextPlayer, UserClicked} = this.props;
+    let { gameState, gameStatus, nextPlayer, userClicked} = this.props;
 
     return (
       <div className="container-fluid">
@@ -50,43 +50,43 @@ export default class GamePage extends Component {
           <div className="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 tictac-container">
             <div className="row">
               <div className="col-md-4 col-sm-4 col-xs-4 cell"
-                onClick={() => this.handleClick(gameState, 0, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 0, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 0) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell"
-                onClick={() => this.handleClick(gameState, 1, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 1, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 1) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell cell-right"
-                onClick={() => this.handleClick(gameState, 2, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 2, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 2) }
               </div>
             </div>
             <div className="row">
               <div className="col-md-4 col-sm-4 col-xs-4 cell"
-                onClick={() => this.handleClick(gameState, 3, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 3, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 3) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell"
-                onClick={() => this.handleClick(gameState, 4, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 4, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 4) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell cell-right"
-                onClick={() => this.handleClick(gameState, 5, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 5, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 5) }
               </div>
             </div>
             <div className="row">
               <div className="col-md-4 col-sm-4 col-xs-4 cell cell-bottom"
-                onClick={() => this.handleClick(gameState, 6, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 6, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 6) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell cell-bottom"
-                onClick={() => this.handleClick(gameState, 7, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 7, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 7) }
               </div>
               <div className="col-md-4 col-sm-4 col-xs-4 cell cell-right cell-bottom"
-                onClick={() => this.handleClick(gameState, 8, UserClicked)}>
+                onClick={() => this.handleClick(gameState, 8, userClicked)}>
                   { this.displayCircleOrTimes(gameState, 8) }
               </div>
             </div>
@@ -106,5 +106,5 @@ GamePage.propTypes = {
   gameState: PropTypes.array,
   gameStatus: PropTypes.object,
   nextPlayer: PropTypes.string,
-  UserClicked: PropTypes.func.isRequired
+  userClicked: PropTypes.func.isRequired
 };
