@@ -1,0 +1,39 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game with React",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors --hot",
+    "bundle": "webpack --config webpack.config.prod.js"
+  },
+   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvongray/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "Eniola Arinde",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-loader": "^6.2.4",
+    "babel-core": "^6.0.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.9.1",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
