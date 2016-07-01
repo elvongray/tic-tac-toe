@@ -6,9 +6,17 @@ import GamePage from '../components/Gamepage';
 class GameContainer extends Component {
 
   render() {
-    return <GamePage />
+    return <GamePage {...this.props}/>
+  }
+}
+
+let mapStateToProps = (state) => {
+  let { gameState } = state;
+
+  return {
+    gameState
   }
 }
 
 
-export default connect()(GameContainer);
+export default connect(mapStateToProps)(GameContainer);

@@ -1,12 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+
+import gameState from '../reducer/game_state';
 
 
 export default function configureStore(initialState={}) {
   const middleware = [];
 
-  //const reducers = combineReducers({routing: () => {}});
-
-  const store = createStore(() => {}, {}, compose(
+  const store = createStore(gameState, {}, compose(
     applyMiddleware(...middleware),
     typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
   ));

@@ -48,3 +48,11 @@
     font-weight: 300;
   }
 }
+
+.default-circle {
+  color: #FFD687;
+
+  &:hover {
+    color: #F7374B;
+  }
+}
