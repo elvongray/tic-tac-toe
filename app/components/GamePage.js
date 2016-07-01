@@ -13,7 +13,6 @@ export default class GamePage extends Component {
   }
 
   handleClick(gameState, cellNo, UserClicked) {
-    console.log(gameState, cellNo, UserClicked);
     if (gameState[cellNo] === 'o') return;
 
   }
