@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import GamePage from '../components/Gamepage';
 
+import { humanPlays } from '../actions/gameActions';
+
 class GameContainer extends Component {
 
   render() {
@@ -10,13 +12,24 @@ class GameContainer extends Component {
   }
 }
 
+let mapDispatchToProps = (dispatch) => {
+  return {
+    UserClicked: (cellNo) => dispatch(humanPlays(cellNo))
+  }
+}
+
 let mapStateToProps = (state) => {
-  let { gameState } = state;
+  let { gameState , gameStatus, nextPlayer } = state;
 
   return {
-    gameState
+    gameState,
+    gameStatus,
+    nextPlayer
   }
 }
 
 
-export default connect(mapStateToProps)(GameContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameContainer);

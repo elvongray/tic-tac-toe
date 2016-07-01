@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors --hot",
     "bundle": "webpack --config webpack.config.prod.js"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/elvongray/tic-tac-toe.git"
   },
@@ -19,7 +19,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

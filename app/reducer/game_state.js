@@ -2,7 +2,7 @@
 const initialState = {
   gameState: [0, 0, 0, 0, 0, 0, 0, 0, 0],
   nextPlayer: 'o',
-  gameStatus: ''
+  gameStatus: {status: '', player: ''}
 }
 
 export default (state = initialState, action)  => {
