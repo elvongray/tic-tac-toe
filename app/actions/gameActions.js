@@ -2,24 +2,28 @@ import Game from '../game-logic/game_logic';
 import AI from '../game-logic/ai_logic.js';
 
 import {
-  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN, GAME_OVER
+  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN, GAME_OVER, AI_PLAYS, AI_WINS
 } from '../constants';
 
+const HUMAN = 'o'
+const Ai = 'x'
 
 // Human actions
 export const humanPlays = (cellNo) => {
   return (dispatch, getState) => {
     let { gameState } = getState();
-    let game = Game(gameState, 'o');
 
-    if (game.isGameOver()) return;
+    // check if the player's move is a winning move.
+    let newGameState = gameState.slice();
+    newGameState[cellNo] = HUMAN
+    let game = Game(newGameState, HUMAN);
 
     dispatch(humanPlayed(cellNo));
 
-    if (game.win('o')) {
+    if (game.win(HUMAN)) {
       dispatch(humanWins())
     } else {
-      dispatch(nextPlayersTurn('x'));
+      dispatch(nextPlayersTurn(Ai));
     }
   }
 }
@@ -50,23 +54,38 @@ const nextPlayersTurn = (nextPlayer) => {
 export const AIPlays = () => {
   return (dispatch, getState) => {
     let { gameState } = getState();
-    let game = Game(gameState, 'x');
+
+    // initializr game for ai decision making
+    let game = Game(gameState, Ai);
+    if (game.isGameOver()) return;
 
     // Initialize Ai and make decision
     let ai = AI(game);
     let cellNo = ai.play();
 
-    if (game.isGameOver()) return;
+    if (cellNo !== undefined) {
+      dispatch({ type: AI_PLAYS, payload: cellNo});
 
-    dispatch(humanPlayed(cellNo));
-
-    if (game.win('o')) {
-      dispatch(humanWins())
-    } else {
-      dispatch(nextPlayersTurn('x'));
+      if (AIWins(cellNo, gameState)) {
+        dispatch({ type: AI_WINS });
+      } else{
+        dispatch(nextPlayersTurn(HUMAN));
+      }
     }
   }
 }
+
+const AIWins = (cellNo, gameState) => {
+  let newGameState = gameState.slice();
+  newGameState[cellNo] = Ai;
+
+  let game = Game(newGameState);
+
+  if (game.win(Ai)) return true;
+
+  return false
+}
+// End of AI actions
 
 export const checkGameOver = () => {
   return (dispatch, getState) => {

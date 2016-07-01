@@ -16,7 +16,6 @@ const AI = (game) => {
       let moves = [];
 
       game.getAvailableMoves().forEach((move) => {
-        console.log(game.gameState());
         let newPlayer = game.currentPlayer() === 'x' ? 'o' : 'x';
         let possibleGame = game.returnNewState(move, newPlayer);
         scores.push(this.minimax(possibleGame));
