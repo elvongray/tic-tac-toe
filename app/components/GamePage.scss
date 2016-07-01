@@ -13,8 +13,6 @@
    margin-top: 20px;
 
   .cell {
-    width: 150px;
-    height: 150px;
     border-right: 2px solid #6f6f6f;
     border-bottom: 2px solid #6f6f6f;
     font-size: 5em;
@@ -42,6 +40,7 @@
 .info {
   margin-top: 10px;
   margin-bottom: 70px;
+  text-align: center;
 
   span {
     font-size: 50px;
