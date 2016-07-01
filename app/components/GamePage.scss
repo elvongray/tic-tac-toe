@@ -1,0 +1,51 @@
+.header {
+  margin-bottom: 10px;
+  text-align: center;
+
+  h1 {
+    font-size: 50px;
+    color: #6f6f6f;
+    font-weight: 300;
+  }
+}
+
+.tictac-container {
+   margin-top: 20px;
+
+  .cell {
+    width: 150px;
+    height: 150px;
+    border-right: 2px solid #6f6f6f;
+    border-bottom: 2px solid #6f6f6f;
+    font-size: 5em;
+    text-align: center;
+    line-height: 150px;
+
+    .font-times {
+       color: #515781;
+    }
+
+    .font-circle {
+      color: #F7374B;
+    }
+  }
+
+  .cell-right {
+    border-right: 2px solid #FFD687;
+  }
+
+  .cell-bottom {
+    border-bottom: 2px solid #FFD687;
+  }
+}
+
+.info {
+  margin-top: 10px;
+  margin-bottom: 70px;
+
+  span {
+    font-size: 50px;
+    color: #6f6f6f;
+    font-weight: 300;
+  }
+}
