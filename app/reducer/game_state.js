@@ -15,7 +15,9 @@ export default (state = initialState, action)  => {
 
   switch(action.type) {
     case HUMAN_PLAYS:
-      let finalGameState = gameState.slice()[payload] = 'o';
+      let finalGameState = gameState.slice();
+      finalGameState[payload] = 'o'
+      console.log(finalGameState)
       return { ...state, gameState: finalGameState };
 
     case HUMAN_WINS:
