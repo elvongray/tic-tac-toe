@@ -1,5 +1,6 @@
 import {
-  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN, GAME_OVER, AI_PLAYS, AI_WINS
+  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN,
+  GAME_OVER, AI_PLAYS, AI_WINS, RESTART_GAME
 } from '../constants';
 
 const initialState = {
@@ -32,6 +33,9 @@ export default (state = initialState, action)  => {
       return ( payload === 'draw' ?
         { ...state, gameOver: true, gameStatus: { status: 'draw', player: '' } } :
         { ...state, gameOver: true } );
+
+    case RESTART_GAME:
+      return initialState;
 
     default:
       return initialState;

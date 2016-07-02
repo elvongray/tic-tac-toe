@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import GamePage from '../components/Gamepage';
 
-import { humanPlays, checkGameOver, AIPlays } from '../actions/gameActions';
+import {
+  humanPlays, checkGameOver, AIPlays, restartGame
+} from '../actions/gameActions';
 
 class GameContainer extends Component {
 
@@ -11,8 +13,8 @@ class GameContainer extends Component {
     let { isGameOver, AIPlays, nextPlayer, gameOver } = newProps;
 
     if (!gameOver) {
-      { this.checkIfAITurn(AIPlays, nextPlayer) };
-      { isGameOver() };
+      this.checkIfAITurn(AIPlays, nextPlayer);
+      isGameOver();
     }
   }
 
@@ -33,7 +35,8 @@ let mapDispatchToProps = (dispatch) => {
   return {
     userClicked: (cellNo) => dispatch(humanPlays(cellNo)),
     AIPlays: () => dispatch(AIPlays()),
-    isGameOver: () => dispatch(checkGameOver())
+    isGameOver: () => dispatch(checkGameOver()),
+    restartGame: () => dispatch(restartGame())
   }
 }
 

@@ -2,7 +2,8 @@ import Game from '../game-logic/game_logic';
 import AI from '../game-logic/ai_logic.js';
 
 import {
-  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN, GAME_OVER, AI_PLAYS, AI_WINS
+  HUMAN_PLAYS, HUMAN_WINS, NEXT_PLAYER_TURN,
+  GAME_OVER, AI_PLAYS, AI_WINS, RESTART_GAME
 } from '../constants';
 
 const HUMAN = 'o'
@@ -99,5 +100,11 @@ export const checkGameOver = () => {
         type: GAME_OVER
       })
     }
+  }
+}
+
+export const restartGame = () => {
+  return {
+    type: RESTART_GAME
   }
 }

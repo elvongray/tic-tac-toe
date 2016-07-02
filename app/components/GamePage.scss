@@ -46,6 +46,15 @@
     font-size: 50px;
     color: #6f6f6f;
     font-weight: 300;
+    display: block;
+  }
+
+  button {
+    background-color: #515781;
+
+    &:hover {
+      background-color: #515781;
+    }
   }
 }
 

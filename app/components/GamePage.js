@@ -23,9 +23,3 @@ export default class GamePage extends Component {
   }
 }
 
-GamePage.propTypes = {
-  gameState: PropTypes.array,
-  gameStatus: PropTypes.object,
-  nextPlayer: PropTypes.string,
-  userClicked: PropTypes.func.isRequired
-};

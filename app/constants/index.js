@@ -9,3 +9,4 @@ export const AI_WINS = 'AI_WINS';
 // General constants
 export const NEXT_PLAYER_TURN = 'NEXT_PLAYER_TURN';
 export const GAME_OVER = 'GAME_OVER';
+export const RESTART_GAME = 'RESTART_GAME';

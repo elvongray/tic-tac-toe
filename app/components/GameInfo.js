@@ -25,12 +25,16 @@ export default class GameInfo extends Component {
   }
 
   render() {
-    let { gameStatus, nextPlayer } = this.props;
+    let { gameStatus, nextPlayer, restartGame } = this.props;
 
     return (
       <div className="row">
         <div className="info">
           <span>{ this.diplayGameStatus(gameStatus, nextPlayer) }</span>
+          <button type="button" className="btn btn-primary"
+            onClick={ () => restartGame() }>
+            Restart Game
+          </button>
         </div>
       </div>
     )
@@ -39,5 +43,6 @@ export default class GameInfo extends Component {
 
 GameInfo.propTypes = {
   nextPlayer: PropTypes.string.isRequired,
-  gameStatus: PropTypes.object.isRequired
+  gameStatus: PropTypes.object.isRequired,
+  restartGame: PropTypes.func.isRequired
 };
