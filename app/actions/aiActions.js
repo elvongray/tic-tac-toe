@@ -35,6 +35,8 @@ export const AIPlays = () => {
   }
 }
 
+// Determine if the Ai wins the game based on the
+// chosen cell No.
 const AIWins = (cellNo, gameState) => {
   let newGameState = gameState.slice();
   newGameState[cellNo] = Ai;

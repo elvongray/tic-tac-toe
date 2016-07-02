@@ -10,11 +10,13 @@ export default class GameCells extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // Dispatch action to handle user click on cell
   handleClick(gameState, cellNo, userClicked, nextPlayer) {
     if (gameState[cellNo] === 'o' || nextPlayer !== 'o') return;
     userClicked(cellNo);
   }
 
+  // Display circle or times depending on whose turn to play
   displayCircleOrTimes(gameState, position) {
     if (gameState[position]) {
       return gameState[position] === 'x' ? (<i className="fa fa-times font-times"></i>):

@@ -12,6 +12,9 @@ const AI = (game) => {
       return choice;
     },
 
+    // Implement the minimax algorithm to decided which move to play
+    // Note: still kind of buggy, AI does not try to prevent the player
+    // from winning.
     minimax(game, depth = 0) {
       let player = game.currentPlayer()
       let nextPlayer = game.currentPlayer() === 'x' ? 'o' : 'x';

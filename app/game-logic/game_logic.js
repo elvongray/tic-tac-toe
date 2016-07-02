@@ -7,6 +7,7 @@ let Game = (boardState, curPlayer) => {
   ];
 
   return {
+    // Get all the cells available for play
     getAvailableMoves() {
       return boardState.map((value, index) => {
         if (!value) {
@@ -15,6 +16,7 @@ let Game = (boardState, curPlayer) => {
       }).filter(value => value !== undefined);
     },
 
+    // Check if the player wins the game
     win(player) {
       let playerWin = false;
       possibleWinStates.forEach((value, index) => {
