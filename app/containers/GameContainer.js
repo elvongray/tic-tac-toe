@@ -8,15 +8,16 @@ import { humanPlays, checkGameOver, AIPlays } from '../actions/gameActions';
 class GameContainer extends Component {
 
   componentWillReceiveProps(newProps) {
-    let { isGameOver, AIPlays, nextPlayer } = newProps;
+    let { isGameOver, AIPlays, nextPlayer, gameOver } = newProps;
 
-    { this.checkIfAITurn(AIPlays, nextPlayer) };
-    { isGameOver() };
+    if (!gameOver) {
+      { this.checkIfAITurn(AIPlays, nextPlayer) };
+      { isGameOver() };
+    }
   }
 
   checkIfAITurn(AIPlays, nextPlayer) {
     if (nextPlayer !== 'x') return;
-    console.log(nextPlayer)
     AIPlays()
   }
 
@@ -37,12 +38,13 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 let mapStateToProps = (state) => {
-  let { gameState , gameStatus, nextPlayer } = state;
+  let { gameState , gameStatus, nextPlayer, gameOver } = state;
 
   return {
     gameState,
     gameStatus,
-    nextPlayer
+    nextPlayer,
+    gameOver
   }
 }
 

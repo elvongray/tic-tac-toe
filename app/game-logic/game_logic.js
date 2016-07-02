@@ -38,6 +38,10 @@ let Game = (boardState, curPlayer) => {
       }
     },
 
+    draw() {
+      (boardState.indexOf(0) === -1) ? true : false;
+    },
+
     returnNewState(move, newPlayer) {
       let newBoardState = boardState.slice()
 

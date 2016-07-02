@@ -3,13 +3,10 @@ const AI = (game) => {
   let ai = 'x';
   let human = 'o';
   let choice = undefined;
+  let moves = [];
+  let scores = [];
 
   return {
-
-    moves: [],
-
-    scores: [],
-
     play() {
       this.minimax(game);
       return choice;
@@ -23,18 +20,18 @@ const AI = (game) => {
 
       game.getAvailableMoves().forEach((move) => {
         let possibleGame = game.returnNewState(move, nextPlayer);
-        this.scores.push(this.minimax(possibleGame, depth));
-        this.moves.push(move)
+        scores.push(this.minimax(possibleGame, depth));
+        moves.push(move)
       });
 
       if (game.currentPlayer() === ai) {
-        let maxScoreIndex = this.scores.indexOf(Math.max.apply(Math, this.scores))
-        choice = this.moves[maxScoreIndex]
-        return this.scores[maxScoreIndex]
+        let maxScoreIndex = scores.indexOf(Math.max(...scores))
+        choice = moves[maxScoreIndex]
+        return scores[maxScoreIndex]
       } else {
-        let minScoreIndex = this.scores.indexOf(Math.min.apply(Math, this.scores))
-        choice = this.moves[minScoreIndex]
-        return this.scores[minScoreIndex]
+        let minScoreIndex = scores.indexOf(Math.min(...scores))
+        choice = moves[minScoreIndex]
+        return scores[minScoreIndex]
       }
     },
 

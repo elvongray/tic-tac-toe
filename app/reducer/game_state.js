@@ -29,7 +29,9 @@ export default (state = initialState, action)  => {
       return { ...state, gameStatus: { status: 'win', player: 'x' } };
 
     case GAME_OVER:
-      return { ...state, gameOver: true }
+      return ( payload === 'draw' ?
+        { ...state, gameOver: true, gameStatus: { status: 'draw', player: '' } } :
+        { ...state, gameOver: true } );
 
     default:
       return initialState;
