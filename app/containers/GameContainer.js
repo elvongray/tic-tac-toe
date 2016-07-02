@@ -5,7 +5,7 @@ import GamePage from '../components/Gamepage';
 
 import {
   humanPlays, checkGameOver, AIPlays, restartGame
-} from '../actions/gameActions';
+} from '../actions';
 
 class GameContainer extends Component {
 
