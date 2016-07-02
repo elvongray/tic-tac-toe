@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
-class GameCells extends Component {
+export default class GameCells extends Component {
 
   constructor(props) {
     super(props)
@@ -78,4 +78,8 @@ class GameCells extends Component {
   }
 }
 
-export default GameCells;
+GameCells.propTypes = {
+  gameState: PropTypes.array,
+  nextPlayer: PropTypes.string,
+  userClicked: PropTypes.func.isRequired
+};
