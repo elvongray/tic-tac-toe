@@ -16,18 +16,17 @@ export default (state = initialState, action)  => {
   switch(action.type) {
     case HUMAN_PLAYS:
     case AI_PLAYS:
+      let { type } = action;
+      let nextPlayer = type === HUMAN_PLAYS ? 'x' : 'o';
       let finalGameState = gameState.slice();
-      finalGameState[payload] = action.type === HUMAN_PLAYS ? 'o' : 'x'
-      return { ...state, gameState: finalGameState };
+      finalGameState[payload] = type === HUMAN_PLAYS ? 'o' : 'x';
+      return { ...state, gameState: finalGameState, nextPlayer};
 
     case HUMAN_WINS:
       return { ...state, gameStatus: { status: 'win', player: 'o' } };
 
     case AI_WINS:
       return { ...state, gameStatus: { status: 'win', player: 'x' } };
-
-    case NEXT_PLAYER_TURN:
-      return { ...state, nextPlayer:  payload };
 
     case GAME_OVER:
       return { ...state, gameOver: true }

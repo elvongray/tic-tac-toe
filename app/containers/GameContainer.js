@@ -7,16 +7,20 @@ import { humanPlays, checkGameOver, AIPlays } from '../actions/gameActions';
 
 class GameContainer extends Component {
 
+  componentWillReceiveProps(newProps) {
+    let { isGameOver, AIPlays, nextPlayer } = newProps;
+
+    { this.checkIfAITurn(AIPlays, nextPlayer) };
+    { isGameOver() };
+  }
+
   checkIfAITurn(AIPlays, nextPlayer) {
     if (nextPlayer !== 'x') return;
-    AIPlays();
+    console.log(nextPlayer)
+    AIPlays()
   }
 
   render() {
-    let { isGameOver, AIPlays, nextPlayer } = this.props
-
-    { this.checkIfAITurn(AIPlays, nextPlayer) }
-    { isGameOver() }
 
     return (
       <GamePage {...this.props}/>

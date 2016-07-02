@@ -22,8 +22,6 @@ export const humanPlays = (cellNo) => {
 
     if (game.win(HUMAN)) {
       dispatch(humanWins())
-    } else {
-      dispatch(nextPlayersTurn(Ai));
     }
   }
 }
@@ -40,13 +38,6 @@ const humanWins = () => {
     type: HUMAN_WINS
   }
 }
-
-const nextPlayersTurn = (nextPlayer) => {
-  return {
-    type: NEXT_PLAYER_TURN,
-    payload: nextPlayer
-  }
-}
 // End of human actions
 
 
@@ -54,24 +45,26 @@ const nextPlayersTurn = (nextPlayer) => {
 export const AIPlays = () => {
   return (dispatch, getState) => {
     let { gameState } = getState();
-
-    // initializr game for ai decision making
+    // initialize game for ai decision making
     let game = Game(gameState, Ai);
     if (game.isGameOver()) return;
 
     // Initialize Ai and make decision
     let ai = AI(game);
-    let cellNo = ai.play();
+    let cellNo = undefined
 
-    if (cellNo !== undefined) {
-      dispatch({ type: AI_PLAYS, payload: cellNo});
+    // Make the AI decision non blocking
+    setTimeout(() => {
+      cellNo = ai.play();
 
-      if (AIWins(cellNo, gameState)) {
-        dispatch({ type: AI_WINS });
-      } else{
-        dispatch(nextPlayersTurn(HUMAN));
+      if (cellNo !== undefined) {
+        dispatch({ type: AI_PLAYS, payload: cellNo});
+
+        if (AIWins(cellNo, gameState)) {
+          dispatch({ type: AI_WINS });
+        }
       }
-    }
+    }, 0)
   }
 }
 
