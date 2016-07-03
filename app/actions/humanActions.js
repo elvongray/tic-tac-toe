@@ -10,7 +10,9 @@ const Ai = 'x'
 // Human actions
 export const humanPlays = (cellNo) => {
   return (dispatch, getState) => {
-    let { gameState } = getState();
+    let { gameState, gameOver } = getState();
+
+    if (gameOver) return;
 
     // check if the player's move is a winning move.
     let newGameState = gameState.slice();
