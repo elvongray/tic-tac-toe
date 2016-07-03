@@ -11,18 +11,7 @@ export const checkGameOver = () => {
     let game = Game(gameState)
 
     if (game.isGameOver()) {
-
-      if (game.draw()) {
-        dispatch({
-          type: GAME_OVER,
-          payload: 'draw'
-        });
-        return;
-      }
-
-      dispatch({
-        type: GAME_OVER
-      })
+      dispatch({ type: GAME_OVER });
     }
   }
 }

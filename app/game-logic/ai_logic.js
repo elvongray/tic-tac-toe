@@ -3,8 +3,6 @@ const AI = (game) => {
   let ai = 'x';
   let human = 'o';
   let choice = undefined;
-  let moves = [];
-  let scores = [];
 
   return {
     play() {
@@ -15,15 +13,17 @@ const AI = (game) => {
     // Implement the minimax algorithm to decided which move to play
     // Note: still kind of buggy, AI does not try to prevent the player
     // from winning.
-    minimax(game, depth = 0) {
+    minimax(game) {
+      if(game.isGameOver()) return this.score(game);
+
+      let moves = [];
+      let scores = [];
       let player = game.currentPlayer()
       let nextPlayer = game.currentPlayer() === 'x' ? 'o' : 'x';
-      depth += 1
-      if(game.isGameOver()) return this.score(game);
 
       game.getAvailableMoves().forEach((move) => {
         let possibleGame = game.returnNewState(move, nextPlayer);
-        scores.push(this.minimax(possibleGame, depth));
+        scores.push(this.minimax(possibleGame));
         moves.push(move)
       });
 
@@ -38,7 +38,7 @@ const AI = (game) => {
       }
     },
 
-    score(game, depth) {
+    score(game) {
       if (game.win(ai)) {
         return 10;
       } else if (game.win(human)){

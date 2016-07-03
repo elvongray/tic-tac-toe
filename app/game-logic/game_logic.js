@@ -44,11 +44,11 @@ let Game = (boardState, curPlayer) => {
       (boardState.indexOf(0) === -1) ? true : false;
     },
 
-    returnNewState(move, newPlayer) {
+    returnNewState(move, nextPlayer) {
       let newBoardState = boardState.slice()
 
-      newBoardState[move] = newPlayer;
-      return Game(newBoardState, newPlayer)
+      newBoardState[move] = this.currentPlayer();
+      return Game(newBoardState, nextPlayer)
     }
   }
 }

@@ -24,15 +24,13 @@ export default (state = initialState, action)  => {
       return { ...state, gameState: finalGameState, nextPlayer};
 
     case HUMAN_WINS:
-      return { ...state, gameStatus: { status: 'win', player: 'o' } };
+      return { ...state, gameStatus: { status: 'win', player: 'o' }, gameOver: true };
 
     case AI_WINS:
-      return { ...state, gameStatus: { status: 'win', player: 'x' } };
+      return { ...state, gameStatus: { status: 'win', player: 'x' }, gameOver: true };
 
     case GAME_OVER:
-      return ( payload === 'draw' ?
-        { ...state, gameOver: true, gameStatus: { status: 'draw', player: '' } } :
-        { ...state, gameOver: true } );
+      return { ...state, gameOver: true, gameStatus: { status: 'draw', player: '' } }
 
     case RESTART_GAME:
       return initialState;
